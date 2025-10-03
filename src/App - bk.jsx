@@ -5,14 +5,12 @@ export default function CargoLandingPage() {
   const [scrolled, setScrolled] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
-	email: '',
     phone: '',
     pickup: '',
     delivery: '',
     packageSize: 'small'
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,62 +20,13 @@ export default function CargoLandingPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (formData.name && formData.phone && formData.pickup && formData.delivery) {
-      setIsSubmitting(true);
-      
-      try {
-        // ============================================
-        // REPLACE THESE WITH YOUR ACTUAL GOOGLE FORM VALUES
-        // ============================================
-        const GOOGLE_FORM_ID = '1FAIpQLScUvVsq3KhDRudPQ4lWFPKA75Q6DCGiS2FsydtAuV4BXJ6grg';  // Replace with your Form ID
-        const GOOGLE_FORM_URL = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
-        
-        // Replace these entry IDs with your actual entry IDs from Google Form
-        const ENTRY_NAME = 'entry.1894689618';      // Replace with your Name entry ID
-		const ENTRY_EMAIL = 'entry.60601163';      // Replace with your Name entry ID
-        const ENTRY_PHONE = 'entry.424067118';     // Replace with your Phone entry ID
-        const ENTRY_PICKUP = 'entry.1108186906';    // Replace with your Pickup entry ID
-        const ENTRY_DELIVERY = 'entry.142342084';  // Replace with your Delivery entry ID
-        const ENTRY_PACKAGE = 'entry.74867768';   // Replace with your Package Size entry ID
-        // ============================================
-        
-        // Create form data for Google Forms
-        const googleFormData = new FormData();
-        googleFormData.append(ENTRY_NAME, formData.name);
-		googleFormData.append(ENTRY_EMAIL, formData.email);
-        googleFormData.append(ENTRY_PHONE, formData.phone);
-        googleFormData.append(ENTRY_PICKUP, formData.pickup);
-        googleFormData.append(ENTRY_DELIVERY, formData.delivery);
-        googleFormData.append(ENTRY_PACKAGE, formData.packageSize);
-        
-        // Submit to Google Forms
-        await fetch(GOOGLE_FORM_URL, {
-          method: 'POST',
-          body: googleFormData,
-          mode: 'no-cors' // Required for Google Forms
-        });
-        
-        // Show success message
-        setIsSubmitting(false);
-        setIsSubmitted(true);
-        
-        // Reset form after 10 seconds
-        setTimeout(() => {
-          setIsSubmitted(false);
-          setFormData({ name: '', email: '', phone: '', pickup: '', delivery: '', packageSize: 'small' });
-        }, 10000);
-        
-      } catch (error) {
-        console.error('Error submitting form:', error);
-        setIsSubmitting(false);
-        // Still show success message since no-cors mode doesn't return response
-        setIsSubmitted(true);
-        setTimeout(() => {
-          setIsSubmitted(false);
-          setFormData({ name: '', email: '', phone: '', pickup: '', delivery: '', packageSize: 'small' });
-        }, 10000);
-      }
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ name: '', phone: '', pickup: '', delivery: '', packageSize: 'small' });
+      }, 3000);
     }
   };
 
@@ -152,7 +101,7 @@ export default function CargoLandingPage() {
                 </div>
                 <div className="space-y-6">
                   {[
-                    { icon: Clock, title: 'Night Delivery', desc: 'Available 6 PM - 3 AM' },
+                    { icon: Clock, title: 'Night Delivery', desc: 'Available 8 PM - 6 AM' },
                     { icon: Package, title: 'Weekend Service', desc: 'Friday & Saturday specialists' },
                     { icon: MapPin, title: 'All Dubai', desc: 'Complete UAE coverage' }
                   ].map((item, idx) => (
@@ -220,19 +169,6 @@ export default function CargoLandingPage() {
                       onChange={handleChange}
                       className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
                       placeholder="Enter your name"
-                      required
-                    />
-                  </div>
-				  <div>
-                    <label className="block text-cyan-300 font-semibold mb-2">Your Email</label>
-                    <input
-                      type="text"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
-                      placeholder="Enter your Email"
-                      required
                     />
                   </div>
                   <div>
@@ -244,7 +180,6 @@ export default function CargoLandingPage() {
                       onChange={handleChange}
                       className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
                       placeholder="+971 XX XXX XXXX"
-                      required
                     />
                   </div>
                 </div>
@@ -258,7 +193,6 @@ export default function CargoLandingPage() {
                     onChange={handleChange}
                     className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
                     placeholder="Enter pickup address in Dubai"
-                    required
                   />
                 </div>
                 
@@ -271,7 +205,6 @@ export default function CargoLandingPage() {
                     onChange={handleChange}
                     className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
                     placeholder="Enter delivery address in Dubai"
-                    required
                   />
                 </div>
                 
@@ -283,21 +216,19 @@ export default function CargoLandingPage() {
                     onChange={handleChange}
                     className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
                   >
-                    <option value="Small (Up to 5 kg)">Small (Up to 5 kg)</option>
-                    <option value="Medium (5-15 kg)">Medium (5-15 kg)</option>
-                    <option value="Large (15-30 kg)">Large (15-30 kg)</option>
-                    <option value="Extra Large (30+ kg)">Extra Large (30+ kg)</option>
-					<option value="Other">Other</option>
+                    <option value="small">Small (Up to 5 kg)</option>
+                    <option value="medium">Medium (5-15 kg)</option>
+                    <option value="large">Large (15-30 kg)</option>
+                    <option value="xlarge">Extra Large (30+ kg)</option>
                   </select>
                 </div>
                 
                 <button
                   onClick={handleSubmit}
-                  disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-8 py-4 rounded-lg font-bold text-lg flex items-center justify-center space-x-2 hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-8 py-4 rounded-lg font-bold text-lg flex items-center justify-center space-x-2 hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105"
                 >
-                  <span>{isSubmitting ? 'Submitting...' : 'Request Quote Now'}</span>
-                  {!isSubmitting && <ArrowRight className="w-5 h-5" />}
+                  <span>Request Quote Now</span>
+                  <ArrowRight className="w-5 h-5" />
                 </button>
               </div>
             ) : (
@@ -306,7 +237,7 @@ export default function CargoLandingPage() {
                   <CheckCircle className="w-12 h-12 text-green-400" />
                 </div>
                 <h4 className="text-2xl font-bold text-white mb-4">Quote Request Received!</h4>
-                <p className="text-slate-400">Our team will contact you within 10 minutes with your personalized quote.</p>
+                <p className="text-slate-400">Our team will contact you within 5 minutes with your personalized quote.</p>
               </div>
             )}
           </div>
@@ -336,7 +267,7 @@ export default function CargoLandingPage() {
                 </div>
                 <div className="flex items-center space-x-3 text-slate-400">
                   <Mail className="w-5 h-5 text-cyan-400" />
-                  <span>info@XXXXXX.XXX</span>
+                  <span>info@nightshift.ae</span>
                 </div>
                 <div className="flex items-center space-x-3 text-slate-400">
                   <MapPin className="w-5 h-5 text-cyan-400" />
@@ -348,7 +279,7 @@ export default function CargoLandingPage() {
             <div>
               <h5 className="text-white font-semibold mb-4">Operating Hours</h5>
               <div className="space-y-2 text-slate-400">
-                <p>Nights: 6:00 PM - 3:00 AM</p>
+                <p>Nights: 8:00 PM - 6:00 AM</p>
                 <p>Weekends: Friday & Saturday</p>
                 <p className="text-cyan-400 font-semibold">24/7 Customer Support</p>
               </div>
