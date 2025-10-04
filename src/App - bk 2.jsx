@@ -5,7 +5,7 @@ export default function CargoLandingPage() {
   const [scrolled, setScrolled] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
+	email: '',
     phone: '',
     pickup: '',
     delivery: '',
@@ -23,7 +23,7 @@ export default function CargoLandingPage() {
   }, []);
 
   const handleSubmit = async () => {
-    if (formData.name && formData.email && formData.phone && formData.pickup && formData.delivery) {
+    if (formData.name && formData.phone && formData.pickup && formData.delivery) {
       setIsSubmitting(true);
       
       try {
@@ -35,17 +35,17 @@ export default function CargoLandingPage() {
         
         // Replace these entry IDs with your actual entry IDs from Google Form
         const ENTRY_NAME = 'entry.1894689618';      // Replace with your Name entry ID
-        const ENTRY_EMAIL = 'entry.60601163';       // Replace with your Email entry ID
-        const ENTRY_PHONE = 'entry.424067118';      // Replace with your Phone entry ID
+		const ENTRY_EMAIL = 'entry.60601163';      // Replace with your Name entry ID
+        const ENTRY_PHONE = 'entry.424067118';     // Replace with your Phone entry ID
         const ENTRY_PICKUP = 'entry.1108186906';    // Replace with your Pickup entry ID
-        const ENTRY_DELIVERY = 'entry.142342084';   // Replace with your Delivery entry ID
-        const ENTRY_PACKAGE = 'entry.74867768';     // Replace with your Package Size entry ID
+        const ENTRY_DELIVERY = 'entry.142342084';  // Replace with your Delivery entry ID
+        const ENTRY_PACKAGE = 'entry.74867768';   // Replace with your Package Size entry ID
         // ============================================
         
         // Create form data for Google Forms
         const googleFormData = new FormData();
         googleFormData.append(ENTRY_NAME, formData.name);
-        googleFormData.append(ENTRY_EMAIL, formData.email);
+		googleFormData.append(ENTRY_EMAIL, formData.email);
         googleFormData.append(ENTRY_PHONE, formData.phone);
         googleFormData.append(ENTRY_PICKUP, formData.pickup);
         googleFormData.append(ENTRY_DELIVERY, formData.delivery);
@@ -96,7 +96,7 @@ export default function CargoLandingPage() {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-white">NightShift Logistics</h1>
-              <p className="text-cyan-300 text-sm">Serving All 7 Emirates</p>
+              <p className="text-cyan-300 text-sm">Dubai's Night & Weekend Experts</p>
             </div>
           </div>
           <div className="hidden md:flex space-x-6">
@@ -119,19 +119,18 @@ export default function CargoLandingPage() {
             <div className="space-y-8">
               <div className="inline-flex items-center space-x-2 bg-cyan-500/20 px-4 py-2 rounded-full border border-cyan-400/30">
                 <Moon className="w-5 h-5 text-cyan-400" />
-                <span className="text-cyan-300 font-semibold">Nights & Full Weekends</span>
+                <span className="text-cyan-300 font-semibold">Available Nights & Weekends</span>
               </div>
               
               <h2 className="text-5xl md:text-6xl font-bold text-white leading-tight">
-                The UAE's Only
+                Dubai's Premier
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
                   After-Hours Delivery
                 </span>
-                <span className="block text-white text-3xl mt-2">Across All 7 Emirates</span>
               </h2>
               
               <p className="text-xl text-slate-300">
-                When others rest, we deliver. Specialized cargo van services operating 6 PM - 2 AM weekdays and full weekends across the entire UAE.
+                When others rest, we deliver. Specialized cargo van services for your night and weekend shipping needs across Dubai.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
@@ -139,16 +138,10 @@ export default function CargoLandingPage() {
                   <span>Get Instant Quote</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
-                <div className="flex gap-3">
-                  <a href="tel:+971XXXXXXXX" className="flex-1 bg-white/10 backdrop-blur-sm text-white px-6 py-4 rounded-lg font-semibold flex items-center justify-center space-x-2 border border-white/20 hover:bg-white/20 transition-all duration-300">
-                    <Phone className="w-5 h-5" />
-                    <span>Call</span>
-                  </a>
-                  <a href="https://wa.me/971XXXXXXXXX" target="_blank" rel="noopener noreferrer" className="flex-1 bg-green-600/20 backdrop-blur-sm text-white px-6 py-4 rounded-lg font-semibold flex items-center justify-center space-x-2 border border-green-500/30 hover:bg-green-600/30 transition-all duration-300">
-                    <Phone className="w-5 h-5" />
-                    <span>WhatsApp</span>
-                  </a>
-                </div>
+                <a href="https://wa.me/971XXXXXXXXX" target="_blank" rel="noopener noreferrer" className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center space-x-2 border border-white/20 hover:bg-white/20 transition-all duration-300">
+                  <Phone className="w-5 h-5" />
+                  <span>WhatsApp us Now</span>
+                </a>
               </div>
             </div>
             
@@ -159,9 +152,9 @@ export default function CargoLandingPage() {
                 </div>
                 <div className="space-y-6">
                   {[
-                    { icon: Clock, title: 'Night Delivery', desc: '6 PM - 2 AM Weekdays' },
-                    { icon: Package, title: 'Weekend Service', desc: 'Full weekend coverage' },
-                    { icon: MapPin, title: 'All UAE', desc: 'All 7 Emirates covered' }
+                    { icon: Clock, title: 'Night Delivery', desc: 'Available 6 PM - 3 AM' },
+                    { icon: Package, title: 'Weekend Service', desc: 'Friday & Saturday specialists' },
+                    { icon: MapPin, title: 'All Dubai', desc: 'Complete UAE coverage' }
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-start space-x-4 p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:translate-x-2">
                       <div className="bg-gradient-to-br from-cyan-400 to-blue-500 p-3 rounded-lg">
@@ -184,15 +177,15 @@ export default function CargoLandingPage() {
       <div id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold text-white mb-4">Why Choose UAE-Wide Night & Weekend Delivery?</h3>
-            <p className="text-slate-400 text-lg">We operate when traffic is light across all Emirates - from Dubai to Abu Dhabi, Sharjah to Fujairah</p>
+            <h3 className="text-4xl font-bold text-white mb-4">Why Choose Night & Weekend Delivery?</h3>
+            <p className="text-slate-400 text-lg">We operate when traffic is light and your business needs flexibility</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: Clock, title: 'Off-Peak Efficiency', desc: 'Faster inter-emirate routes with minimal traffic congestion during night hours across the UAE', color: 'from-cyan-500 to-blue-500' },
-              { icon: Moon, title: 'UAE-Wide Coverage', desc: 'The only service operating across all 7 Emirates during nights and full weekends', color: 'from-blue-500 to-indigo-500' },
-              { icon: CheckCircle, title: 'Reliable Service', desc: 'Professional cross-emirate handling with real-time tracking and updates', color: 'from-indigo-500 to-purple-500' }
+              { icon: Clock, title: 'Off-Peak Efficiency', desc: 'Faster routes with minimal traffic congestion during night hours', color: 'from-cyan-500 to-blue-500' },
+              { icon: Moon, title: 'Flexible Scheduling', desc: 'Perfect for businesses needing after-hours or weekend logistics', color: 'from-blue-500 to-indigo-500' },
+              { icon: CheckCircle, title: 'Reliable Service', desc: 'Professional handling with real-time tracking and updates', color: 'from-indigo-500 to-purple-500' }
             ].map((service, idx) => (
               <div key={idx} className="group bg-gradient-to-br from-slate-800 to-slate-900 p-8 rounded-2xl border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
                 <div className={`bg-gradient-to-br ${service.color} w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:animate-pulse`}>
@@ -227,6 +220,19 @@ export default function CargoLandingPage() {
                       onChange={handleChange}
                       className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
                       placeholder="Enter your name"
+                      required
+                    />
+                  </div>
+				  <div>
+                    <label className="block text-cyan-300 font-semibold mb-2">Your Email</label>
+                    <input
+                      type="text"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
+                      placeholder="Enter your Email"
+                      required
                     />
                   </div>
                   <div>
@@ -238,20 +244,9 @@ export default function CargoLandingPage() {
                       onChange={handleChange}
                       className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
                       placeholder="+971 XX XXX XXXX"
+                      required
                     />
                   </div>
-                </div>
-                
-                <div>
-                  <label className="block text-cyan-300 font-semibold mb-2">Email Address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
-                    placeholder="your.email@example.com"
-                  />
                 </div>
                 
                 <div>
@@ -262,7 +257,8 @@ export default function CargoLandingPage() {
                     value={formData.pickup}
                     onChange={handleChange}
                     className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
-                    placeholder="Enter pickup address (any Emirate)"
+                    placeholder="Enter pickup address in Dubai"
+                    required
                   />
                 </div>
                 
@@ -274,7 +270,8 @@ export default function CargoLandingPage() {
                     value={formData.delivery}
                     onChange={handleChange}
                     className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
-                    placeholder="Enter delivery address (any Emirate)"
+                    placeholder="Enter delivery address in Dubai"
+                    required
                   />
                 </div>
                 
@@ -286,11 +283,11 @@ export default function CargoLandingPage() {
                     onChange={handleChange}
                     className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
                   >
-                    <option value="small">Small (Up to 5 kg)</option>
-                    <option value="medium">Medium (5-15 kg)</option>
-                    <option value="large">Large (15-30 kg)</option>
-                    <option value="xlarge">Extra Large (30+ kg)</option>
-                    <option value="other">Other</option>
+                    <option value="Small (Up to 5 kg)">Small (Up to 5 kg)</option>
+                    <option value="Medium (5-15 kg)">Medium (5-15 kg)</option>
+                    <option value="Large (15-30 kg)">Large (15-30 kg)</option>
+                    <option value="Extra Large (30+ kg)">Extra Large (30+ kg)</option>
+					<option value="Other">Other</option>
                   </select>
                 </div>
                 
@@ -309,31 +306,9 @@ export default function CargoLandingPage() {
                   <CheckCircle className="w-12 h-12 text-green-400" />
                 </div>
                 <h4 className="text-2xl font-bold text-white mb-4">Quote Request Received!</h4>
-                <p className="text-slate-400">Our team will contact you within 5 minutes with your personalized quote.</p>
+                <p className="text-slate-400">Our team will contact you within 10 minutes with your personalized quote.</p>
               </div>
             )}
-          </div>
-        </div>
-      </div>
-
-      {/* Coverage Section */}
-      <div className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl font-bold text-white mb-4">We Cover All 7 Emirates</h3>
-            <p className="text-slate-400 text-lg">Seamless night and weekend delivery across the entire UAE</p>
-          </div>
-          
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              'Dubai', 'Abu Dhabi', 'Sharjah', 'Ajman',
-              'Ras Al Khaimah', 'Fujairah', 'Umm Al Quwain'
-            ].map((emirate, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm p-6 rounded-xl border border-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300 transform hover:scale-105 text-center">
-                <MapPin className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
-                <h4 className="text-white font-semibold text-lg">{emirate}</h4>
-              </div>
-            ))}
           </div>
         </div>
       </div>
@@ -349,7 +324,7 @@ export default function CargoLandingPage() {
                 </div>
                 <span className="text-xl font-bold text-white">NightShift Logistics</span>
               </div>
-              <p className="text-slate-400">The UAE's trusted night and weekend cargo delivery service across all 7 Emirates.</p>
+              <p className="text-slate-400">Dubai's trusted night and weekend cargo delivery service.</p>
             </div>
             
             <div>
@@ -361,11 +336,11 @@ export default function CargoLandingPage() {
                 </div>
                 <div className="flex items-center space-x-3 text-slate-400">
                   <Mail className="w-5 h-5 text-cyan-400" />
-                  <span>info@nightshift.ae</span>
+                  <span>info@XXXXXX.XXX</span>
                 </div>
                 <div className="flex items-center space-x-3 text-slate-400">
                   <MapPin className="w-5 h-5 text-cyan-400" />
-                  <span>Based in Dubai, Serving All UAE</span>
+                  <span>Dubai, UAE</span>
                 </div>
               </div>
             </div>
@@ -373,15 +348,15 @@ export default function CargoLandingPage() {
             <div>
               <h5 className="text-white font-semibold mb-4">Operating Hours</h5>
               <div className="space-y-2 text-slate-400">
-                <p><strong className="text-cyan-300">Weekdays:</strong> 6:00 PM - 2:00 AM</p>
-                <p><strong className="text-cyan-300">Weekends:</strong> Full Coverage</p>
-                <p className="text-cyan-400 font-semibold mt-3">24/7 Customer Support</p>
+                <p>Nights: 6:00 PM - 3:00 AM</p>
+                <p>Weekends: Friday & Saturday</p>
+                <p className="text-cyan-400 font-semibold">24/7 Customer Support</p>
               </div>
             </div>
           </div>
           
           <div className="mt-12 pt-8 border-t border-slate-800 text-center text-slate-500">
-            <p>&copy; 2025 NightShift Logistics. All rights reserved. | Delivering across all 7 Emirates when others rest.</p>
+            <p>&copy; 2025 NightShift Logistics. All rights reserved.</p>
           </div>
         </div>
       </footer>
