@@ -287,10 +287,10 @@ export default function CargoLandingPage() {
                     className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
                   >
                     <option value="small">Small (Up to 5 kg)</option>
-                    <option value="medium">Medium (5-15 kg)</option>
+                    <option value="mid">Medium (5-15 kg)</option>
                     <option value="large">Large (15-30 kg)</option>
                     <option value="xlarge">Extra Large (30+ kg)</option>
-                    <option value="other">Other</option>
+                    <option value="others">Other</option>
                   </select>
                 </div>
                 
