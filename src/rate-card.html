@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NightShift Logistics - Rate Card 2025</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
+            padding: 40px 40px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, transparent 70%);
+            top: -200px;
+            left: -100px;
+            border-radius: 50%;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            border-radius: 50%;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(34, 211, 238, 0.3);
+        }
+        
+        .logo-text h1 {
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text p {
+            color: #22d3ee;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .tagline {
+            color: #cbd5e1;
+            font-size: 18px;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+            margin-top: 10px;
+        }
+        
+        /* Info Bar */
+        .info-bar {
+            background: linear-gradient(90deg, #22d3ee 0%, #3b82f6 100%);
+            padding: 20px 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .info-item {
+            text-align: center;
+            color: white;
+        }
+        
+        .info-item-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .info-item-value {
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+        /* Main Content */
+        .content {
+            padding: 40px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #22d3ee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 6px;
+            height: 28px;
+            background: linear-gradient(180deg, #22d3ee 0%, #3b82f6 100%);
+            border-radius: 3px;
+        }
+        
+        /* Pricing Tables */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .pricing-card:hover {
+            border-color: #22d3ee;
+            box-shadow: 0 10px 30px rgba(34, 211, 238, 0.2);
+        }
+        
+        .pricing-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: white;
+            padding: 15px 20px;
+            font-weight: 700;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pricing-body {
+            padding: 20px;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .price-row:last-child {
+            border-bottom: none;
+        }
+        
+        .price-label {
+            color: #475569;
+            font-size: 14px;
+        }
+        
+        .price-value {
+            color: #0f172a;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        
+        .highlight {
+            color: #22d3ee;
+        }
+        
+        /* Additional Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .service-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .service-name {
+            font-size: 13px;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+        
+        .service-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        
+        /* Sample Routes */
+        .routes-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .routes-table thead {
+            background: linear-gradient(90deg, #22d3ee 0%, #3b82f6 100%);
+            color: white;
+        }
+        
+        .routes-table th {
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .routes-table td {
+            padding: 12px 15px;
+            font-size: 14px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .routes-table tbody tr:hover {
+            background: #f8fafc;
+        }
+        
+        .routes-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .route-name {
+            font-weight: 600;
+            color: #0f172a;
+        }
+        
+        .route-price {
+            color: #22d3ee;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        
+        /* Important Notes */
+        .notes-section {
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .notes-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .notes-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .notes-list li {
+            padding: 5px 0;
+            color: #78350f;
+            font-size: 13px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .notes-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #f59e0b;
+            font-weight: 700;
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            padding: 30px 40px;
+            color: white;
+            margin-top: auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #22d3ee;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            font-size: 13px;
+            color: #cbd5e1;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 6px;
+        }
+        
+        .footer-section a:hover {
+            color: #22d3ee;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: #94a3b8;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #22d3ee 0%, #3b82f6 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 10px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <rect x="1" y="3" width="15" height="13"></rect>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>NightShift Logistics</h1>
+                    <p>Serving All 7 Emirates</p>
+                </div>
+            </div>
+            <p class="tagline">"Delivering across the UAE when others rest"</p>
+        </div>
+        
+        <!-- Info Bar -->
+        <div class="info-bar">
+            <div class="info-item">
+                <div class="info-item-label">Weekday Hours</div>
+                <div class="info-item-value">6:00 PM - 2:00 AM</div>
+            </div>
+            <div class="info-item">
+                <div class="info-item-label">Weekend Service</div>
+                <div class="info-item-value">Full Coverage</div>
+            </div>
+            <div class="info-item">
+                <div class="info-item-label">Cargo Capacity</div>
+                <div class="info-item-value">1.5 Tons / 6.6m³</div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Night Service Pricing -->
+            <h2 class="section-title">Service Rates</h2>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        🌙 Night Service
+                        <span class="badge">6PM - 2AM</span>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-row">
+                            <span class="price-label">Within Emirate (Base)</span>
+                            <span class="price-value highlight">AED 100</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-label">Per Kilometer</span>
+                            <span class="price-value">+ AED 2.5/km</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-label">Inter-Emirate (Base)</span>
+                            <span class="price-value highlight">AED 150</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-label">Per Kilometer</span>
+                            <span class="price-value">+ AED 2.5/km</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        📅 Weekend Service
+                        <span class="badge">SAT & SUN</span>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-row">
+                            <span class="price-label">Within Emirate (Base)</span>
+                            <span class="price-value highlight">AED 120</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-label">Per Kilometer</span>
+                            <span class="price-value">+ AED 2.8/km</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-label">Inter-Emirate (Base)</span>
+                            <span class="price-value highlight">AED 170</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-label">Per Kilometer</span>
+                            <span class="price-value">+ AED 2.8/km</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Services -->
+            <h2 class="section-title">Additional Services</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-name">Waiting Time</div>
+                    <div class="service-price">AED 40<span style="font-size: 13px; font-weight: 400; color: #64748b;">/30 min</span></div>
+                </div>
+                <div class="service-card">
+                    <div class="service-name">Helper Service</div>
+                    <div class="service-price">AED 50</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-name">Urgent Delivery</div>
+                    <div class="service-price">+30%<span style="font-size: 13px; font-weight: 400; color: #64748b;"> surcharge</span></div>
+                </div>
+            </div>
+            
+            <!-- Sample Routes -->
+            <h2 class="section-title">Sample Night Service Rates</h2>
+            
+            <table class="routes-table">
+                <thead>
+                    <tr>
+                        <th>Route</th>
+                        <th>Distance</th>
+                        <th>Estimated Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="route-name">Dubai Marina → Business Bay</td>
+                        <td>15 km</td>
+                        <td class="route-price">AED 138</td>
+                    </tr>
+                    <tr>
+                        <td class="route-name">Dubai → Sharjah</td>
+                        <td>30 km</td>
+                        <td class="route-price">AED 225</td>
+                    </tr>
+                    <tr>
+                        <td class="route-name">Dubai → Abu Dhabi</td>
+                        <td>140 km</td>
+                        <td class="route-price">AED 500</td>
+                    </tr>
+                    <tr>
+                        <td class="route-name">Sharjah → Ajman</td>
+                        <td>12 km</td>
+                        <td class="route-price">AED 130</td>
+                    </tr>
+                    <tr>
+                        <td class="route-name">Dubai → Fujairah</td>
+                        <td>130 km</td>
+                        <td class="route-price">AED 475</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Important Notes -->
+            <div class="notes-section">
+                <div class="notes-title">Important Information</div>
+                <ul class="notes-list">
+                    <li>All prices are exclusive of 5% VAT</li>
+                    <li>Urgent delivery requests (within 2 hours) incur a 30% surcharge</li>
+                    <li>Prices calculated from pickup to delivery point (actual distance traveled)</li>
+                    <li>Payment accepted: Cash, Bank Transfer, or Credit/Debit Card</li>
+                    <li>24/7 customer support available via WhatsApp and phone</li>
+                    <li>Real-time tracking provided for all deliveries</li>
+                    <li>Minimum booking notice: 1 hour (2 hours for urgent deliveries)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>About NightShift</h3>
+                    <p>The UAE's only dedicated night and weekend cargo delivery service operating across all 7 Emirates. Fast, reliable, and specialized in after-hours logistics.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>📱 +971 XX XXX XXXX</p>
+                    <p>📧 info@nightshift.ae</p>
+                    <p>💬 WhatsApp Available</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Coverage</h3>
+                    <p>🗺️ All 7 Emirates</p>
+                    <p>🌙 6 PM - 2 AM Weekdays</p>
+                    <p>📅 Saturday & Sunday</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2025 NightShift Logistics. All rights reserved. | Valid until December 31, 2025
+            </div>
+        </div>
+    </div>
+</body>
+</html>
