@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/nightshift-logistics/',  // IMPORTANT: Must match your repo name
+  base: '/nightshift-logistics',  // IMPORTANT: Must match your repo name
   build: {
     outDir: 'dist',
   }
