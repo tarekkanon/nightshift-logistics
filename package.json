@@ -1,9 +1,9 @@
 {
-  "name": "night-shiftlogistics",
+  "name": "nightshift-logistics",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "http://night-shiftlogistics.com/",
+  "homepage": "http://tarekkanon.github.io/nightshift-logistics",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
