@@ -85,7 +85,7 @@ export default function CargoLandingPage() {
               <Truck className="w-8 h-8 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-white">NightShift Logistics</h1>
+              <h1 className="text-2xl font-bold text-white">Night Shift Logistics</h1>
               <p className="text-cyan-300 text-sm">Serving All 7 Emirates</p>
             </div>
           </div>
@@ -380,7 +380,7 @@ export default function CargoLandingPage() {
                 <div className="bg-gradient-to-r from-cyan-400 to-blue-500 p-2 rounded-lg">
                   <Truck className="w-6 h-6 text-white" />
                 </div>
-                <span className="text-xl font-bold text-white">NightShift Logistics</span>
+                <span className="text-xl font-bold text-white">Night Shift Logistics</span>
               </div>
               <p className="text-slate-400">The UAE's trusted night and weekend cargo delivery service across all 7 Emirates.</p>
             </div>
@@ -414,7 +414,7 @@ export default function CargoLandingPage() {
           </div>
           
           <div className="mt-12 pt-8 border-t border-slate-800 text-center text-slate-500">
-            <p>&copy; 2025 NightShift Logistics. All rights reserved. | Delivering across all 7 Emirates when others rest.</p>
+            <p>&copy; 2025 Night Shift Logistics. All rights reserved. | Delivering across all 7 Emirates when others rest.</p>
           </div>
         </div>
       </footer>
