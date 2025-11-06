@@ -5,6 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Last Mile Delivery Dubai | E-Commerce Night & Weekend Delivery Service | NightShift Logistics</title>
     <meta name="description" content="Professional last-mile delivery for e-commerce in Dubai. Owner-operated night & weekend delivery service with live updates and proof of delivery. Cars for packages.">
+    
+    <!-- Google Analytics 4 -->
+    <!-- REPLACE 'G-PGR4K4W2P1' WITH YOUR ACTUAL GA4 MEASUREMENT ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGR4K4W2P1"></script>
+    <script>
+        /*
+        =====================================================
+        GOOGLE ANALYTICS 4 - COMPREHENSIVE EVENT TRACKING
+        =====================================================
+        
+        SETUP INSTRUCTIONS:
+        1. Get your GA4 Measurement ID from Google Analytics
+        2. Replace 'G-PGR4K4W2P1' with your actual Measurement ID (appears twice above)
+        3. Deploy the page and start tracking!
+        
+        EVENTS BEING TRACKED:
+        
+        1. PAGE ENGAGEMENT:
+           - page_view: Initial page load
+           - time_on_page: Milestones at 10s, 30s, 1min, 2min, 5min
+           - page_exit: When user leaves (includes total time and scroll depth)
+        
+        2. SCROLL TRACKING:
+           - scroll_depth: Triggered at 25%, 50%, 75%, and 100% of page
+        
+        3. SECTION VISIBILITY:
+           - section_view: When each section enters viewport
+             • benefits
+             • how-it-works
+             • pricing
+             • contact
+        
+        4. BUTTON CLICKS:
+           - button_click: All CTA buttons tracked with:
+             • Start Free Trial (hero_section, navigation)
+             • WhatsApp Owner (hero_section)
+             • Get Started (navigation)
+             • Request Quote Now (contact_form)
+             • Call Phone (footer)
+             • Email (footer)
+        
+        5. LINK CLICKS:
+           - link_click: All navigation and footer links
+             • Benefits, How It Works, Pricing (navigation, footer)
+             • Enterprise Pricing (pricing_section)
+        
+        6. FORM INTERACTIONS:
+           - form_field_focus: When user focuses on any form field
+             • name, phone, email, pickup, delivery, packageSize
+           - form_field_complete: When user fills out a field
+           - form_submit_attempt: When submit button is clicked
+           - form_submit_success: Successful form submission
+           - form_submit_error: Form submission error
+           - form_submit_incomplete: Submit attempt with missing fields
+        
+        7. CONVERSIONS:
+           - generate_lead: Tracked as conversion on successful form submit
+        
+        VIEWING YOUR DATA:
+        - Go to Google Analytics 4 dashboard
+        - Navigate to Reports > Engagement > Events
+        - See real-time data in Reports > Realtime
+        - Create custom reports for specific metrics
+        
+        RECOMMENDED GA4 EXPLORATIONS:
+        - Funnel: page_view → section_view → form_field_focus → generate_lead
+        - Path: How users navigate through sections
+        - Retention: Time on page vs conversion rate
+        - Segment: Compare behavior by scroll depth reached
+        
+        =====================================================
+        */
+        
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PGR4K4W2P1', {
+            'send_page_view': true
+        });
+        
+        // Custom event helper function
+        function trackEvent(eventName, eventParams) {
+            gtag('event', eventName, eventParams);
+            console.log('GA Event:', eventName, eventParams);
+        }
+    </script>
+    
     <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -111,16 +198,140 @@
             });
             const [isSubmitted, setIsSubmitted] = useState(false);
             const [isSubmitting, setIsSubmitting] = useState(false);
+            
+            // Analytics tracking states
+            const [timeOnPage, setTimeOnPage] = useState(0);
+            const [scrollDepthTracked, setScrollDepthTracked] = useState({
+                '25': false,
+                '50': false,
+                '75': false,
+                '100': false
+            });
+            const [sectionsViewed, setSectionsViewed] = useState(new Set());
 
+            // Track time on page
             useEffect(() => {
-                const handleScroll = () => setScrolled(window.scrollY > 50);
-                window.addEventListener('scroll', handleScroll);
-                return () => window.removeEventListener('scroll', handleScroll);
+                const startTime = Date.now();
+                window.trackEvent('page_view', {
+                    page_title: 'E-Commerce Landing Page',
+                    page_location: window.location.href
+                });
+
+                const timer = setInterval(() => {
+                    const seconds = Math.floor((Date.now() - startTime) / 1000);
+                    setTimeOnPage(seconds);
+                    
+                    // Track time milestones
+                    if (seconds === 10) {
+                        window.trackEvent('time_on_page', { duration: '10_seconds' });
+                    } else if (seconds === 30) {
+                        window.trackEvent('time_on_page', { duration: '30_seconds' });
+                    } else if (seconds === 60) {
+                        window.trackEvent('time_on_page', { duration: '1_minute' });
+                    } else if (seconds === 120) {
+                        window.trackEvent('time_on_page', { duration: '2_minutes' });
+                    } else if (seconds === 300) {
+                        window.trackEvent('time_on_page', { duration: '5_minutes' });
+                    }
+                }, 1000);
+
+                return () => {
+                    clearInterval(timer);
+                    const finalTime = Math.floor((Date.now() - startTime) / 1000);
+                    window.trackEvent('page_exit', { 
+                        time_on_page: finalTime,
+                        reached_bottom: scrollDepthTracked['100']
+                    });
+                };
             }, []);
+
+            // Track scroll depth and section visibility
+            useEffect(() => {
+                const handleScroll = () => {
+                    const scrollTop = window.scrollY;
+                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const scrollPercent = (scrollTop / docHeight) * 100;
+                    
+                    // Update navbar style
+                    setScrolled(scrollTop > 50);
+                    
+                    // Track scroll depth milestones
+                    if (scrollPercent >= 25 && !scrollDepthTracked['25']) {
+                        setScrollDepthTracked(prev => ({ ...prev, '25': true }));
+                        window.trackEvent('scroll_depth', { depth: '25%' });
+                    }
+                    if (scrollPercent >= 50 && !scrollDepthTracked['50']) {
+                        setScrollDepthTracked(prev => ({ ...prev, '50': true }));
+                        window.trackEvent('scroll_depth', { depth: '50%' });
+                    }
+                    if (scrollPercent >= 75 && !scrollDepthTracked['75']) {
+                        setScrollDepthTracked(prev => ({ ...prev, '75': true }));
+                        window.trackEvent('scroll_depth', { depth: '75%' });
+                    }
+                    if (scrollPercent >= 95 && !scrollDepthTracked['100']) {
+                        setScrollDepthTracked(prev => ({ ...prev, '100': true }));
+                        window.trackEvent('scroll_depth', { depth: '100%' });
+                    }
+                    
+                    // Track section visibility
+                    const sections = ['benefits', 'how-it-works', 'pricing', 'contact'];
+                    sections.forEach(sectionId => {
+                        const element = document.getElementById(sectionId);
+                        if (element) {
+                            const rect = element.getBoundingClientRect();
+                            const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+                            if (isVisible && !sectionsViewed.has(sectionId)) {
+                                setSectionsViewed(prev => new Set([...prev, sectionId]));
+                                window.trackEvent('section_view', { 
+                                    section_name: sectionId,
+                                    time_to_view: timeOnPage
+                                });
+                            }
+                        }
+                    });
+                };
+                
+                window.addEventListener('scroll', handleScroll);
+                handleScroll(); // Check initial state
+                
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, [scrollDepthTracked, sectionsViewed, timeOnPage]);
+
+            // Track button clicks
+            const trackButtonClick = (buttonName, buttonLocation) => {
+                window.trackEvent('button_click', {
+                    button_name: buttonName,
+                    button_location: buttonLocation,
+                    time_on_page: timeOnPage
+                });
+            };
+
+            // Track link clicks
+            const trackLinkClick = (linkName, linkUrl) => {
+                window.trackEvent('link_click', {
+                    link_name: linkName,
+                    link_url: linkUrl,
+                    time_on_page: timeOnPage
+                });
+            };
+
+            // Track form field interactions
+            const trackFormFieldFocus = (fieldName) => {
+                window.trackEvent('form_field_focus', {
+                    field_name: fieldName,
+                    time_on_page: timeOnPage
+                });
+            };
 
             const handleSubmit = async () => {
                 if (formData.name && formData.email && formData.phone && formData.pickup && formData.delivery) {
                     setIsSubmitting(true);
+                    
+                    // Track form submission attempt
+                    window.trackEvent('form_submit_attempt', {
+                        time_on_page: timeOnPage,
+                        package_size: formData.packageSize
+                    });
                     
                     try {
                         const GOOGLE_FORM_ID = '1FAIpQLScUvVsq3KhDRudPQ4lWFPKA75Q6DCGiS2FsydtAuV4BXJ6grg';
@@ -150,6 +361,23 @@
                         setIsSubmitting(false);
                         setIsSubmitted(true);
                         
+                        // Track successful form submission
+                        window.trackEvent('form_submit_success', {
+                            time_on_page: timeOnPage,
+                            package_size: formData.packageSize,
+                            scroll_depth_reached: Math.max(
+                                ...Object.keys(scrollDepthTracked)
+                                    .filter(key => scrollDepthTracked[key])
+                                    .map(Number)
+                            )
+                        });
+                        
+                        // Track conversion
+                        window.trackEvent('generate_lead', {
+                            value: 1,
+                            currency: 'AED'
+                        });
+                        
                         setTimeout(() => {
                             setIsSubmitted(false);
                             setFormData({ name: '', email: '', phone: '', pickup: '', delivery: '', packageSize: 'small' });
@@ -159,16 +387,40 @@
                         console.error('Error:', error);
                         setIsSubmitting(false);
                         setIsSubmitted(true);
+                        
+                        // Track form submission error
+                        window.trackEvent('form_submit_error', {
+                            error_message: error.message,
+                            time_on_page: timeOnPage
+                        });
+                        
                         setTimeout(() => {
                             setIsSubmitted(false);
                             setFormData({ name: '', email: '', phone: '', pickup: '', delivery: '', packageSize: 'small' });
                         }, 10000);
                     }
+                } else {
+                    // Track incomplete form submission
+                    window.trackEvent('form_submit_incomplete', {
+                        time_on_page: timeOnPage,
+                        fields_filled: Object.keys(formData).filter(key => formData[key]).length
+                    });
                 }
             };
 
             const handleChange = (e) => {
-                setFormData({ ...formData, [e.target.name]: e.target.value });
+                const fieldName = e.target.name;
+                const fieldValue = e.target.value;
+                
+                setFormData({ ...formData, [fieldName]: fieldValue });
+                
+                // Track form field completion
+                if (fieldValue && !formData[fieldName]) {
+                    window.trackEvent('form_field_complete', {
+                        field_name: fieldName,
+                        time_on_page: timeOnPage
+                    });
+                }
             };
 
             return h('div', { className: 'min-h-screen bg-white' },
@@ -207,18 +459,22 @@
                             h('div', { className: 'hidden md:flex items-center space-x-6' },
                                 h('a', {
                                     href: '#benefits',
+                                    onClick: () => trackLinkClick('Benefits', '#benefits'),
                                     className: scrolled ? 'text-slate-700 hover:text-cyan-600 font-medium' : 'text-white hover:text-cyan-300 font-medium'
                                 }, 'Benefits'),
                                 h('a', {
                                     href: '#how-it-works',
+                                    onClick: () => trackLinkClick('How It Works', '#how-it-works'),
                                     className: scrolled ? 'text-slate-700 hover:text-cyan-600 font-medium' : 'text-white hover:text-cyan-300 font-medium'
                                 }, 'How It Works'),
                                 h('a', {
                                     href: '#pricing',
+                                    onClick: () => trackLinkClick('Pricing', '#pricing'),
                                     className: scrolled ? 'text-slate-700 hover:text-cyan-600 font-medium' : 'text-white hover:text-cyan-300 font-medium'
                                 }, 'Pricing'),
                                 h('a', {
                                     href: '#contact',
+                                    onClick: () => trackButtonClick('Get Started', 'navigation'),
                                     className: 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all'
                                 }, 'Get Started')
                             )
@@ -253,6 +509,7 @@
                                 h('div', { className: 'flex flex-wrap gap-4' },
                                     h('a', {
                                         href: '#contact',
+                                        onClick: () => trackButtonClick('Start Free Trial', 'hero_section'),
                                         className: 'group bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg flex items-center space-x-2 hover:shadow-2xl hover:shadow-cyan-500/50 transition-all transform hover:scale-105'
                                     },
                                         h('span', null, 'Start Free Trial'),
@@ -262,6 +519,7 @@
                                         href: 'https://wa.me/971565108183?text=Hello%20NightShift%2C%20I%27m%20interested%20in%20your%20e-commerce%20delivery%20services',
                                         target: '_blank',
                                         rel: 'noopener noreferrer',
+                                        onClick: () => trackButtonClick('WhatsApp Owner', 'hero_section'),
                                         className: 'bg-green-600/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-bold text-lg flex items-center space-x-2 border border-green-500/30 hover:bg-green-600/30 transition-all'
                                     },
                                         h(Icon, { type: 'phone', className: 'w-5 h-5' }),
@@ -562,7 +820,7 @@
                                 {
                                     title: 'Night Deliveries',
                                     time: '6 PM - 2 AM',
-                                    price: 'From AED 20',
+                                    price: 'From AED 40',
                                     features: [
                                         'Zero traffic delays',
                                         'Higher success rate',
@@ -575,7 +833,7 @@
                                 {
                                     title: 'Weekend Deliveries',
                                     time: 'Saturday & Sunday',
-                                    price: 'From AED 25',
+                                    price: 'From AED 50',
                                     features: [
                                         'Premium weekend service',
                                         'Flexible time slots',
@@ -626,6 +884,7 @@
                             h('p', { className: 'text-slate-600 mb-4' }, 'Need custom pricing for your volume?'),
                             h('a', {
                                 href: '#contact',
+                                onClick: () => trackLinkClick('Enterprise Pricing', 'pricing_section'),
                                 className: 'inline-flex items-center space-x-2 text-cyan-600 font-semibold hover:text-cyan-700'
                             },
                                 h('span', null, 'Contact us for enterprise pricing'),
@@ -654,6 +913,7 @@
                                             name: 'name',
                                             value: formData.name,
                                             onChange: handleChange,
+                                            onFocus: () => trackFormFieldFocus('name'),
                                             className: 'w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400',
                                             placeholder: 'Enter your name'
                                         })
@@ -665,6 +925,7 @@
                                             name: 'phone',
                                             value: formData.phone,
                                             onChange: handleChange,
+                                            onFocus: () => trackFormFieldFocus('phone'),
                                             className: 'w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400',
                                             placeholder: '+971 XX XXX XXXX'
                                         })
@@ -677,6 +938,7 @@
                                         name: 'email',
                                         value: formData.email,
                                         onChange: handleChange,
+                                        onFocus: () => trackFormFieldFocus('email'),
                                         className: 'w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400',
                                         placeholder: 'your.email@example.com'
                                     })
@@ -688,6 +950,7 @@
                                         name: 'pickup',
                                         value: formData.pickup,
                                         onChange: handleChange,
+                                        onFocus: () => trackFormFieldFocus('pickup'),
                                         className: 'w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400',
                                         placeholder: 'Enter pickup address'
                                     })
@@ -699,6 +962,7 @@
                                         name: 'delivery',
                                         value: formData.delivery,
                                         onChange: handleChange,
+                                        onFocus: () => trackFormFieldFocus('delivery'),
                                         className: 'w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400',
                                         placeholder: 'Enter delivery address'
                                     })
@@ -709,6 +973,7 @@
                                         name: 'packageSize',
                                         value: formData.packageSize,
                                         onChange: handleChange,
+                                        onFocus: () => trackFormFieldFocus('packageSize'),
                                         className: 'w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400'
                                     },
                                         h('option', { value: 'small' }, 'Small (Up to 5 kg)'),
@@ -719,7 +984,10 @@
                                     )
                                 ),
                                 h('button', {
-                                    onClick: handleSubmit,
+                                    onClick: () => {
+                                        trackButtonClick('Request Quote Now', 'contact_form');
+                                        handleSubmit();
+                                    },
                                     disabled: isSubmitting,
                                     className: 'w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg flex items-center justify-center space-x-2 hover:shadow-2xl hover:shadow-cyan-500/50 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100'
                                 },
@@ -764,6 +1032,7 @@
                                         h('li', { key: link },
                                             h('a', {
                                                 href: `#${link.toLowerCase().replace(' ', '-')}`,
+                                                onClick: () => trackLinkClick(link, 'footer'),
                                                 className: 'text-slate-400 hover:text-cyan-400 text-sm'
                                             }, link)
                                         )
@@ -775,11 +1044,19 @@
                                 h('ul', { className: 'space-y-3' },
                                     h('li', { className: 'flex items-center space-x-3' },
                                         h(Icon, { type: 'phone', className: 'w-4 h-4 text-cyan-400' }),
-                                        h('a', { href: 'tel:+971565108183', className: 'text-slate-400 text-sm hover:text-cyan-400' }, '+971 56 510 8183')
+                                        h('a', { 
+                                            href: 'tel:+971565108183',
+                                            onClick: () => trackButtonClick('Call Phone', 'footer'),
+                                            className: 'text-slate-400 text-sm hover:text-cyan-400' 
+                                        }, '+971 56 510 8183')
                                     ),
                                     h('li', { className: 'flex items-center space-x-3' },
                                         h(Icon, { type: 'mail', className: 'w-4 h-4 text-cyan-400' }),
-                                        h('a', { href: 'mailto:info@nightshift.ae', className: 'text-slate-400 text-sm hover:text-cyan-400' }, 'info@nightshift.ae')
+                                        h('a', { 
+                                            href: 'mailto:order@night-shiftlogistics.com',
+                                            onClick: () => trackButtonClick('Email', 'footer'),
+                                            className: 'text-slate-400 text-sm hover:text-cyan-400' 
+                                        }, 'order@night-shiftlogistics.com')
                                     )
                                 )
                             ),
