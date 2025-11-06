@@ -394,7 +394,7 @@ export default function CargoLandingPage() {
                 </div>
                 <div className="flex items-center space-x-3 text-slate-400">
                   <Mail className="w-5 h-5 text-cyan-400" />
-                  <a href="mailto:info@nightshift.ae" className="hover:text-cyan-400 transition-colors">info@nightshift.ae</a>
+                  <a href="mailto:order@night-shiftlogistics.com" className="hover:text-cyan-400 transition-colors">order@night-shiftlogistics.com</a>
                 </div>
                 <div className="flex items-center space-x-3 text-slate-400">
                   <MapPin className="w-5 h-5 text-cyan-400" />
