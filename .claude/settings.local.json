@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"d:\\nightshift-logistics\\src\\App_original.tsx\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
