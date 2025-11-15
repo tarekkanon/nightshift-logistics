@@ -1,0 +1,122 @@
+# GitHub Pages Deployment Guide
+
+This project is configured to deploy to GitHub Pages with the custom domain **night-shiftlogistics.com**.
+
+## Automatic Deployment
+
+The site automatically deploys to GitHub Pages when you push to the `main` branch using GitHub Actions.
+
+### First-Time Setup
+
+1. **Enable GitHub Pages in your repository:**
+   - Go to your repository on GitHub
+   - Navigate to **Settings** > **Pages**
+   - Under **Source**, select **GitHub Actions**
+
+2. **Configure your custom domain:**
+   - In the same Pages settings, under **Custom domain**, enter: `night-shiftlogistics.com`
+   - Click **Save**
+   - GitHub will automatically verify your domain
+
+3. **Configure DNS settings at your domain registrar:**
+
+   Add the following DNS records:
+
+   **For apex domain (night-shiftlogistics.com):**
+   ```
+   Type: A
+   Name: @
+   Value: 185.199.108.153
+
+   Type: A
+   Name: @
+   Value: 185.199.109.153
+
+   Type: A
+   Name: @
+   Value: 185.199.110.153
+
+   Type: A
+   Name: @
+   Value: 185.199.111.153
+   ```
+
+   **For www subdomain (optional):**
+   ```
+   Type: CNAME
+   Name: www
+   Value: tarekkanon.github.io
+   ```
+
+4. **Enable HTTPS:**
+   - After DNS propagation (can take 24-48 hours), return to Pages settings
+   - Check **Enforce HTTPS**
+
+## Manual Deployment
+
+If you need to deploy manually:
+
+```bash
+npm run deploy
+```
+
+This will build the project and deploy to the `gh-pages` branch.
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## Project Structure
+
+- `public/CNAME` - Contains your custom domain configuration
+- `.github/workflows/deploy.yml` - GitHub Actions workflow for automatic deployment
+- `vite.config.js` - Vite configuration with base path set to `/` for custom domain
+- `package.json` - Contains deployment scripts and homepage URL
+
+## Deployment Workflow
+
+1. Push code to `main` branch
+2. GitHub Actions automatically:
+   - Checks out the code
+   - Installs dependencies
+   - Builds the project
+   - Deploys to GitHub Pages
+3. Your site is live at https://night-shiftlogistics.com
+
+## Troubleshooting
+
+### DNS not resolving
+- Wait up to 48 hours for DNS propagation
+- Verify DNS records with: `nslookup night-shiftlogistics.com`
+
+### 404 errors
+- Ensure the CNAME file exists in the `public` folder
+- Verify base path in `vite.config.js` is set to `/`
+
+### Build failures
+- Check GitHub Actions logs in the **Actions** tab
+- Ensure all dependencies are properly listed in `package.json`
+- Run `npm run build` locally to test
+
+### Custom domain not working
+- Verify the domain is added in GitHub Pages settings
+- Check that CNAME file contains only: `night-shiftlogistics.com`
+- Ensure DNS records point to GitHub's servers
+
+## Resources
+
+- [GitHub Pages Documentation](https://docs.github.com/en/pages)
+- [Custom Domain Configuration](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
+- [Vite Documentation](https://vitejs.dev/guide/)
