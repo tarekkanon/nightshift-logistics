@@ -1,21 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	  <!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PGR4K4W2P1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PGR4K4W2P1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-PGR4K4W2P1");
+    </script>
 
-	  gtag('config', 'G-PGR4K4W2P1');
-	</script>
+    <!-- GitHub Pages SPA redirect script -->
+    <script>
+      (function () {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
+
+    <!-- Basic Meta Tags -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Dubai's premier after-hours cargo delivery service. Specialized night and weekend logistics solutions." />
-    <meta name="keywords" content="Dubai delivery, night delivery, weekend delivery, cargo van, logistics UAE" />
-    <title>NightShift Logistics - Dubai's Night & Weekend Delivery Experts</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Dubai's premier 24/7 after-hours cargo delivery service. Specialized night and weekend logistics solutions across all 7 UAE Emirates. Fast, reliable, same-day delivery."
+    />
+    <meta
+      name="keywords"
+      content="Dubai delivery, night delivery UAE, weekend delivery, 24/7 cargo service, logistics Dubai, after hours delivery, same day delivery Dubai, express delivery UAE, cargo van Dubai, logistics UAE, Dubai courier service"
+    />
+    <meta name="author" content="NightShift Logistics" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Geographic Meta Tags -->
+    <meta name="geo.region" content="AE-DU" />
+    <meta name="geo.placename" content="Dubai" />
+    <meta name="geo.position" content="25.2048;55.2708" />
+    <meta name="ICBM" content="25.2048, 55.2708" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://night-shiftlogistics.com/" />
+    <meta
+      property="og:title"
+      content="NightShift Logistics - Dubai's 24/7 Night & Weekend Delivery Experts"
+    />
+    <meta
+      property="og:description"
+      content="Premier after-hours cargo delivery across all 7 UAE Emirates. Fast, reliable night and weekend logistics solutions."
+    />
+    <meta
+      property="og:image"
+      content="https://night-shiftlogistics.com/og-image.jpg"
+    />
+    <meta property="og:site_name" content="NightShift Logistics" />
+    <meta property="og:locale" content="en_AE" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://night-shiftlogistics.com/" />
+    <meta
+      name="twitter:title"
+      content="NightShift Logistics - Dubai's 24/7 Night & Weekend Delivery Experts"
+    />
+    <meta
+      name="twitter:description"
+      content="Premier after-hours cargo delivery across all 7 UAE Emirates. Fast, reliable night and weekend logistics solutions."
+    />
+    <meta
+      name="twitter:image"
+      content="https://night-shiftlogistics.com/og-image.jpg"
+    />
+    <meta name="twitter:creator" content="@nightshiftdubai" />
+
+    <!-- Mobile Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="NightShift" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="canonical" href="https://night-shiftlogistics.com/" />
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+
+    <title>
+      NightShift Logistics - Dubai's 24/7 Night & Weekend Delivery Experts |
+      Same-Day Cargo Service UAE
+    </title>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "NightShift Logistics",
+        "description": "Dubai's premier after-hours cargo delivery service. Specialized night and weekend logistics solutions across all 7 UAE Emirates.",
+        "url": "https://night-shiftlogistics.com",
+        "logo": "https://night-shiftlogistics.com/logo.png",
+        "image": "https://night-shiftlogistics.com/og-image.jpg",
+        "telephone": "+971-56-510-8183",
+        "email": "order@night-shiftlogistics.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "AE",
+          "addressRegion": "Dubai",
+          "addressLocality": "Dubai"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "25.2048",
+          "longitude": "55.2708"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Dubai" },
+          { "@type": "City", "name": "Abu Dhabi" },
+          { "@type": "City", "name": "Sharjah" },
+          { "@type": "City", "name": "Ajman" },
+          { "@type": "City", "name": "Ras Al Khaimah" },
+          { "@type": "City", "name": "Fujairah" },
+          { "@type": "City", "name": "Umm Al Quwain" }
+        ],
+        "serviceType": "Logistics and Delivery Service",
+        "priceRange": "$$",
+        "openingHours": "Mo-Su 00:00-23:59",
+        "sameAs": [
+          "https://www.facebook.com/nightshiftlogistics",
+          "https://www.instagram.com/nightshiftlogistics",
+          "https://twitter.com/nightshiftdubai"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
