@@ -62,7 +62,6 @@ export default function HomePage() {
         }, 10000);
 
       } catch (error) {
-        console.error('Error submitting form:', error);
         setIsSubmitting(false);
         setIsSubmitted(true);
         setTimeout(() => {
@@ -79,27 +78,97 @@ export default function HomePage() {
 
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Logistics and Delivery Service",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "NightShift Logistics",
-      "url": "https://night-shiftlogistics.com",
-      "areaServed": "UAE"
+    "@type": "LocalBusiness",
+    "@id": "https://night-shiftlogistics.com",
+    "name": "NightShift Logistics",
+    "url": "https://night-shiftlogistics.com",
+    "logo": "https://night-shiftlogistics.com/logo.png",
+    "image": "https://night-shiftlogistics.com/images/night-delivery-uae.jpg",
+    "description": "Professional night and weekend delivery service across all 7 UAE Emirates. Specialized cargo van services for e-commerce, cloud kitchens, and businesses. Operating 6 PM - 2 AM weekdays and full weekends.",
+    "telephone": "+971565108183",
+    "email": "order@night-shiftlogistics.com",
+    "priceRange": "AED 40-150",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dubai",
+      "addressRegion": "Dubai",
+      "addressCountry": "AE"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "25.2048",
+      "longitude": "55.2708"
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Dubai"
+      },
+      {
+        "@type": "City",
+        "name": "Abu Dhabi"
+      },
+      {
+        "@type": "City",
+        "name": "Sharjah"
+      },
+      {
+        "@type": "City",
+        "name": "Ajman"
+      },
+      {
+        "@type": "City",
+        "name": "Ras Al Khaimah"
+      },
+      {
+        "@type": "City",
+        "name": "Fujairah"
+      },
+      {
+        "@type": "City",
+        "name": "Umm Al Quwain"
+      }
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "18:00",
+        "closes": "02:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    ],
+    "sameAs": [
+      "https://wa.me/971565108183"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "68",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "serviceType": ["Night Delivery", "Weekend Delivery", "E-Commerce Logistics", "Cloud Kitchen Delivery", "Cargo Van Service", "Last Mile Delivery"],
     "offers": {
-      "@type": "Offer",
-      "availability": "https://schema.org/InStock",
-      "priceRange": "$$"
+      "@type": "AggregateOffer",
+      "priceCurrency": "AED",
+      "lowPrice": "40",
+      "highPrice": "150",
+      "offerCount": "3"
     }
   };
 
   return (
     <>
       <SEO
-        title="NightShift Logistics - Dubai's 24/7 Night & Weekend Delivery Service"
-        description="Premier after-hours cargo delivery across all 7 UAE Emirates. Fast, reliable night and weekend logistics solutions. Get instant quotes for same-day delivery."
-        keywords="Dubai 24/7 delivery, night delivery UAE, weekend delivery Dubai, after hours cargo service, express delivery Dubai, same day delivery UAE, logistics Dubai, cargo van Dubai"
+        title="Night & Weekend Delivery UAE | 24/7 Cargo Service All 7 Emirates | NightShift Logistics"
+        description="UAE's only after-hours delivery service. Professional cargo van delivery 6 PM-2 AM + weekends across Dubai, Abu Dhabi, Sharjah & all Emirates. E-commerce, cloud kitchens, businesses. Get instant quote."
+        keywords="night delivery UAE, weekend delivery UAE, after hours cargo UAE, 24/7 delivery Dubai Abu Dhabi Sharjah, night logistics UAE, cargo van delivery UAE, ecommerce delivery UAE, cloud kitchen delivery UAE, business delivery UAE, same day delivery UAE, express delivery all emirates"
         canonical="https://night-shiftlogistics.com"
         structuredData={structuredData}
       />
@@ -143,15 +212,17 @@ export default function HomePage() {
                 </div>
 
                 <h2 className="text-5xl md:text-6xl font-bold text-white leading-tight">
-                  The UAE's Only
+                  UAE's Premier
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
-                    After-Hours Delivery
+                    Night & Weekend
                   </span>
-                  <span className="block text-white text-3xl mt-2">Across All 7 Emirates</span>
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+                    Delivery Service
+                  </span>
                 </h2>
 
-                <p className="text-xl text-slate-300">
-                  When others rest, we deliver. Specialized cargo van services operating 6 PM - 2 AM weekdays and full weekends across the entire UAE.
+                <p className="text-xl text-slate-300 leading-relaxed">
+                  Professional cargo van delivery across <strong className="text-cyan-300">all 7 Emirates</strong> when others rest. Serving e-commerce, cloud kitchens, retail, and businesses. <strong className="text-white">6 PM - 2 AM weekdays + full weekends.</strong>
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -204,8 +275,8 @@ export default function HomePage() {
         <div id="specialized" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h3 className="text-4xl font-bold text-white mb-4">Industry-Specific Solutions</h3>
-              <p className="text-slate-400 text-lg">Tailored night & weekend delivery services for your business needs</p>
+              <h3 className="text-4xl font-bold text-white mb-4">Solutions for Every Business Type</h3>
+              <p className="text-slate-400 text-lg max-w-3xl mx-auto">Whether you're an online store, restaurant, retail business, or enterprise—we have specialized night & weekend delivery solutions designed for your industry</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -407,8 +478,22 @@ export default function HomePage() {
         <div id="quote" className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <h3 className="text-4xl font-bold text-white mb-4">Get Your Instant Quote</h3>
-              <p className="text-slate-400 text-lg">Fill out the form below and we'll contact you within 5 minutes</p>
+              <h3 className="text-4xl font-bold text-white mb-4">Get Your Free Quote in 2 Minutes</h3>
+              <p className="text-slate-400 text-lg">Tell us your delivery needs. We'll respond within 5 minutes with a custom quote for your UAE deliveries.</p>
+              <div className="flex items-center justify-center gap-6 mt-6 text-sm">
+                <div className="flex items-center gap-2 text-cyan-300">
+                  <CheckCircle className="w-5 h-5" />
+                  <span>No Setup Fees</span>
+                </div>
+                <div className="flex items-center gap-2 text-cyan-300">
+                  <CheckCircle className="w-5 h-5" />
+                  <span>All 7 Emirates</span>
+                </div>
+                <div className="flex items-center gap-2 text-cyan-300">
+                  <CheckCircle className="w-5 h-5" />
+                  <span>Fast Response</span>
+                </div>
+              </div>
             </div>
 
             <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl border border-cyan-400/30 rounded-2xl p-8 shadow-2xl">

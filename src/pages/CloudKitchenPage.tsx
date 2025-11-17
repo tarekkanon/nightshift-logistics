@@ -28,7 +28,6 @@ export default function CloudKitchenPage() {
         timestamp: new Date().toISOString()
       };
       (window as any).gtag('event', eventName, enrichedParams);
-      console.log('GA4 Event:', eventName, enrichedParams);
     }
   };
 
@@ -168,10 +167,15 @@ export default function CloudKitchenPage() {
         }
       ]
     },
-    "areaServed": {
-      "@type": "State",
-      "name": "United Arab Emirates"
-    },
+    "areaServed": [
+      {"@type": "City", "name": "Dubai"},
+      {"@type": "City", "name": "Abu Dhabi"},
+      {"@type": "City", "name": "Sharjah"},
+      {"@type": "City", "name": "Ajman"},
+      {"@type": "City", "name": "Ras Al Khaimah"},
+      {"@type": "City", "name": "Fujairah"},
+      {"@type": "City", "name": "Umm Al Quwain"}
+    ],
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
@@ -197,9 +201,9 @@ export default function CloudKitchenPage() {
   return (
     <>
       <SEO
-        title="Night Delivery for Cloud Kitchens Dubai | Restaurant Supply Transport UAE | NightShift Logistics"
-        description="Specialized night & weekend delivery for cloud kitchens in Dubai. Move inventory between branches, receive supplies after hours. 6 PM-2 AM service across all UAE. No disruption to peak hours."
-        keywords="cloud kitchen delivery dubai, restaurant supply transport uae, night delivery food business, inter-branch inventory transfer, ghost kitchen logistics, dark kitchen delivery, food business cargo dubai"
+        title="Cloud Kitchen Delivery UAE | Night & Weekend Restaurant Logistics All Emirates | NightShift"
+        description="Specialized night & weekend delivery for cloud kitchens across all UAE Emirates. Inter-branch transfers, supply delivery, equipment transport. 6 PM-2 AM service Dubai, Abu Dhabi, Sharjah & all UAE. Zero peak-hour disruption."
+        keywords="cloud kitchen delivery UAE, restaurant supply transport UAE Dubai Abu Dhabi Sharjah, night delivery food business UAE, inter-branch inventory transfer UAE, ghost kitchen logistics UAE, dark kitchen delivery all emirates, food business cargo UAE, restaurant logistics UAE, kitchen supply delivery UAE"
         canonical="https://night-shiftlogistics.com/cloud-kitchen"
         structuredData={structuredData}
       />
@@ -259,7 +263,7 @@ export default function CloudKitchenPage() {
               <div className="space-y-8">
                 <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
                   <ChefHat className="w-5 h-5 text-white" />
-                  <span className="text-white font-semibold">Trusted by 15+ Cloud Kitchens Across UAE</span>
+                  <span className="text-white font-semibold">Trusted by 15+ Cloud Kitchens Across All 7 UAE Emirates</span>
                 </div>
 
                 <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
@@ -267,7 +271,7 @@ export default function CloudKitchenPage() {
                 </h1>
 
                 <p className="text-2xl text-orange-100 leading-relaxed">
-                  Move inventory between branches, receive supplies, transfer equipment—<strong className="text-white"> all during your off-peak hours.</strong>
+                  Move inventory between branches, receive supplies, transfer equipment across <strong className="text-white">all UAE Emirates</strong>—<strong className="text-white">all during your off-peak hours.</strong>
                 </p>
 
                 <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
@@ -324,7 +328,7 @@ export default function CloudKitchenPage() {
                   <div className="space-y-6">
                     {[
                       { icon: Clock, stat: '6PM-2AM', label: 'Night Operations', subtext: 'Zero disruption to peak hours' },
-                      { icon: Truck, stat: '15+', label: 'Cloud Kitchens Served', subtext: 'Across Dubai, Sharjah, Abu Dhabi' },
+                      { icon: Truck, stat: '15+', label: 'Cloud Kitchens Served', subtext: 'Across All 7 UAE Emirates' },
                       { icon: Shield, stat: '< 2 Hours', label: 'Response Time', subtext: 'Direct owner communication' }
                     ].map((item, idx) => (
                       <div key={idx} className="flex items-center space-x-4 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all transform hover:scale-105">
@@ -401,10 +405,10 @@ export default function CloudKitchenPage() {
                   benefit: 'Direct communication line'
                 },
                 {
-                  title: 'All-UAE Coverage',
-                  desc: 'Kitchens in Dubai, Sharjah, and Abu Dhabi? We cover all 7 Emirates with reliable night service. One partner for all locations.',
+                  title: 'All 7 Emirates Coverage',
+                  desc: 'Kitchens across UAE? We cover Dubai, Abu Dhabi, Sharjah, Ajman, RAK, Fujairah, UAQ with reliable night service. One partner for all locations.',
                   icon: MapPin,
-                  benefit: 'Single vendor, full coverage'
+                  benefit: 'Single vendor, complete UAE coverage'
                 },
                 {
                   title: 'Flexible & Scalable',
@@ -776,7 +780,7 @@ export default function CloudKitchenPage() {
                   </div>
                   <span className="text-xl font-bold text-white">NightShift</span>
                 </div>
-                <p className="text-slate-400 text-sm">Specialized night & weekend delivery for cloud kitchens across UAE. Operating 6 PM-2 AM + full weekends.</p>
+                <p className="text-slate-400 text-sm">Specialized night & weekend delivery for cloud kitchens across all 7 UAE Emirates. Operating 6 PM-2 AM + full weekends.</p>
               </div>
               <div>
                 <h4 className="text-white font-semibold mb-4">Quick Links</h4>
@@ -812,7 +816,7 @@ export default function CloudKitchenPage() {
               </div>
             </div>
             <div className="pt-8 border-t border-slate-800 text-center">
-              <p className="text-slate-500 text-sm">© 2025 NightShift Logistics. Professional Night & Weekend Delivery for Cloud Kitchens in Dubai, UAE.</p>
+              <p className="text-slate-500 text-sm">© 2025 NightShift Logistics. Professional Night & Weekend Delivery for Cloud Kitchens Across All UAE Emirates.</p>
             </div>
           </div>
         </footer>
