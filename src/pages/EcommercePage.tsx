@@ -9,7 +9,6 @@ import SEO from '../components/SEO';
 const trackEvent = (eventName: string, eventParams: Record<string, any>) => {
   if (typeof window !== 'undefined' && (window as any).gtag) {
     (window as any).gtag('event', eventName, eventParams);
-    console.log('GA Event:', eventName, eventParams);
   }
 };
 
@@ -85,10 +84,15 @@ export default function EcommercePage() {
         }
       ],
       "sameAs": ["https://wa.me/971565108183"],
-      "areaServed": {
-        "@type": "City",
-        "name": "Dubai"
-      },
+      "areaServed": [
+        {"@type": "City", "name": "Dubai"},
+        {"@type": "City", "name": "Abu Dhabi"},
+        {"@type": "City", "name": "Sharjah"},
+        {"@type": "City", "name": "Ajman"},
+        {"@type": "City", "name": "Ras Al Khaimah"},
+        {"@type": "City", "name": "Fujairah"},
+        {"@type": "City", "name": "Umm Al Quwain"}
+      ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5",
@@ -105,10 +109,15 @@ export default function EcommercePage() {
         "@type": "LocalBusiness",
         "name": "NightShift Logistics"
       },
-      "areaServed": {
-        "@type": "City",
-        "name": "Dubai"
-      },
+      "areaServed": [
+        {"@type": "City", "name": "Dubai"},
+        {"@type": "City", "name": "Abu Dhabi"},
+        {"@type": "City", "name": "Sharjah"},
+        {"@type": "City", "name": "Ajman"},
+        {"@type": "City", "name": "Ras Al Khaimah"},
+        {"@type": "City", "name": "Fujairah"},
+        {"@type": "City", "name": "Umm Al Quwain"}
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Delivery Services",
@@ -142,10 +151,10 @@ export default function EcommercePage() {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What areas do you serve in Dubai?",
+          "name": "What areas do you serve in UAE?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We provide last-mile delivery services across all areas of Dubai, UAE. Our owner-operated service ensures coverage throughout the emirate with professional care."
+            "text": "We provide last-mile delivery services across all 7 UAE Emirates: Dubai, Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain. Our owner-operated service ensures professional coverage throughout the entire UAE."
           }
         },
         {
@@ -340,7 +349,6 @@ export default function EcommercePage() {
         }, 10000);
 
       } catch (error) {
-        console.error('Error:', error);
         setIsSubmitting(false);
         setIsSubmitted(true);
 
@@ -379,9 +387,9 @@ export default function EcommercePage() {
   return (
     <>
       <SEO
-        title="Last Mile Delivery Dubai | E-Commerce Night & Weekend Delivery Service | NightShift Logistics"
-        description="Professional last-mile delivery for e-commerce in Dubai. Owner-operated night & weekend delivery service with live updates and proof of delivery. Cars for packages. AED 40+ per delivery."
-        keywords="last mile delivery Dubai, ecommerce delivery UAE, night delivery Dubai, weekend delivery service, package delivery Dubai, owner-operated courier, Dubai logistics, e-commerce fulfillment, same day delivery Dubai, express delivery UAE, parcel delivery Dubai, courier service Dubai"
+        title="E-Commerce Last Mile Delivery UAE | Night & Weekend Service All Emirates | NightShift"
+        description="Professional last-mile delivery for online stores across all UAE. Owner-operated night & weekend service with live tracking, proof of delivery. Dubai, Abu Dhabi, Sharjah & all Emirates. From AED 40."
+        keywords="last mile delivery UAE, ecommerce delivery UAE Dubai Abu Dhabi Sharjah, night delivery ecommerce UAE, weekend delivery service UAE, package delivery all emirates, owner-operated courier UAE, online store delivery UAE, e-commerce fulfillment UAE, same day delivery UAE, express delivery UAE all emirates, parcel delivery UAE, courier service UAE"
         canonical="https://night-shiftlogistics.com/ecommerce"
         structuredData={structuredData}
         ogImage="https://night-shiftlogistics.com/images/og-ecommerce-delivery.jpg"
@@ -465,7 +473,7 @@ export default function EcommercePage() {
                   Your Customers Deserve <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Perfect Deliveries</span>
                 </h1>
                 <p className="text-xl text-slate-300 leading-relaxed">
-                  Professional night & weekend last-mile delivery with our fleet of reliable cars. <strong className="text-cyan-400">Owner-operated</strong> means you speak directly with the person handling your deliveries – no middlemen, no delays, instant decisions.
+                  Professional night & weekend last-mile delivery across <strong className="text-cyan-400">all UAE Emirates</strong> with our fleet of reliable cars. <strong className="text-cyan-400">Owner-operated</strong> means you speak directly with the person handling your deliveries – no middlemen, no delays, instant decisions.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <a
@@ -1029,7 +1037,7 @@ export default function EcommercePage() {
                   <span className="text-xl font-bold text-white">NightShift</span>
                 </div>
                 <p className="text-slate-400 text-sm">
-                  Professional e-commerce last-mile delivery across Dubai using reliable cars. Owner-operated for maximum reliability and care.
+                  Professional e-commerce last-mile delivery across all 7 UAE Emirates using reliable cars. Owner-operated for maximum reliability and care.
                 </p>
               </div>
               <div>
@@ -1079,13 +1087,13 @@ export default function EcommercePage() {
                   <li>🌙 Weekdays: 6 PM - 2 AM</li>
                   <li>📅 Weekends: Full Coverage</li>
                   <li>📞 Support: 24/7</li>
-                  <li className="text-cyan-400 font-semibold mt-3">Based in Dubai, UAE</li>
+                  <li className="text-cyan-400 font-semibold mt-3">Serving All 7 UAE Emirates</li>
                 </ul>
               </div>
             </div>
             <div className="pt-8 border-t border-slate-800 text-center">
               <p className="text-slate-500 text-sm">
-                © 2025 NightShift Logistics. Professional Last-Mile E-Commerce Delivery Solutions in Dubai.
+                © 2025 NightShift Logistics. Professional Last-Mile E-Commerce Delivery Across All UAE Emirates.
               </p>
             </div>
           </div>
